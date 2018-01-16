@@ -24,10 +24,10 @@ module.exports={
       bcrypt.compare(password, data[0].password).then((pass)=>{
         if(pass){
           db.get_library([data[0].id]).then((book)=>{
-            console.log(book, 'book')
-          })
+            res.send(book)
+          }).catch((err)=>console.log(err))
            req.session.user = { username };
-           res.json({ username });
+          //  res.json({ username });
           } else {
               res.status(403).json({ message: 'Invalid password' });
                 }
