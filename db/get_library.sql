@@ -1,1 +1,1 @@
-select * from Library where userId = $1
+select * from Library where userid = $1

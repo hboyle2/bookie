@@ -16,47 +16,13 @@ app.use(session({
   resave: false,
 }));
 
-//register user 
-
-app.post('/register', (req, res) => {
-  const { username, password } = req.body;
-  bcrypt.hash(password, 12).then(hashedPassword =>{
-
-    app.get('db').create_user([username, hashedPassword]).then(() => {
-      req.session.user = { username };
-      res.json({ username });
-    }).catch(error => {
-      console.log('error', error);
-      res.status(400).json({ message: "An error occurred; for security reasons it can't be disclosed" });
-    });
-  })
-});
-
-//Login
-
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
-
-  app.get('db').find_user([username]).then(data => {
-    
-    bcrypt.compare(password, data[0].password).then((pass)=>{
-      if(pass){
-         req.session.user = { username };
-         res.json({ username });
-        } else {
-            res.status(403).json({ message: 'Invalid password' });
-              }
-    })
-  })
-})
 
 //logout
-app.post('/logout', (req, res) => {
-  req.session.destroy();
-  res.send();
-});
-
+app.post('/logout', ctrl.logout);
+app.post('/register', ctrl.registerUser);
+app.post('/login', ctrl.login)
 app.post('/library', ctrl.addToLibrary )
+app.get('/bob', ctrl.bob )
 
 const PORT = 3040;
 app.listen(PORT, () => {

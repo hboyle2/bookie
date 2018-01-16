@@ -18,7 +18,7 @@ class Books extends Component {
          <li >{bo.volumeInfo.title}</li>
           <img src={bo.volumeInfo.imageLinks.thumbnail} />
           <div>{bo.volumeInfo.ratingsCount}</div>
-          <button onClick = {()=>this.addToLibrary(bo.id, bo.volumeInfo.title, bo.volumeInfo.authors, bo.volumeInfo.publisher, bo.volumeInfo.publishedDate, bo.volumeInfo.description, bo.volumeInfo.imageLinks.thumbnail, 4)}>add to library</button>
+          <button onClick = {()=>this.addToLibrary(bo.id, bo.volumeInfo.title, bo.volumeInfo.authors, bo.volumeInfo.publisher, bo.volumeInfo.publishedDate, bo.volumeInfo.description, bo.volumeInfo.imageLinks.thumbnail, 8)}>add to library</button>
       </div>
     );
   }
