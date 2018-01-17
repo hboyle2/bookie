@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import {connect} from 'react-redux';
 import {login} from '../ducks/reducer'
 
@@ -26,7 +25,7 @@ handlePassword(password){
 //   })
 // }
   render() {
-    
+    console.log(this.props.library)
     return (
       <div>
       <input value= {this.state.username} onChange={ (e)=>this.handleUsername(e.target.value)} />
@@ -39,7 +38,7 @@ handlePassword(password){
 
 function mapStateToProps(state) {
   return {
-     
+     library : state.library
   }
 }
 export default connect( mapStateToProps, {login})(Login)

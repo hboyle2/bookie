@@ -24,6 +24,8 @@ export function login(username, password) {
       type: GET_LIBRARY,
       payload: axios.post('/login', {username,password}).then((lib)=>{
         return lib.data
+        
       })
+    
   }
 }

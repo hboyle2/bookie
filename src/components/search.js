@@ -35,7 +35,7 @@ class Search extends Component {
   render() {
  
     const book = this.state.books.map((bo)=>{
-    if(bo.volumeInfo.imageLinks != undefined){
+    if(bo.volumeInfo.imageLinks !== undefined){
 
 
       return (
