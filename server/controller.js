@@ -7,7 +7,7 @@ module.exports={
     bcrypt.hash(password, 12).then(hashedPassword =>{
       const db = req.app.get('db')
       db.create_user([username, hashedPassword]).then(() => {
-        req.session.user = { username };
+        req.session.user =  username ;
         res.json({ username });
       }).catch(error => {
         console.log('error', error);
@@ -19,14 +19,17 @@ module.exports={
   login(req, res) {
     const { username, password } = req.body;
     const db = req.app.get('db')
+    // console.log(db, 'db')
     db.find_user([username]).then(data => {
       bcrypt.compare(password, data[0].password).then((pass)=>{
         if(pass){
+        
           db.get_library([data[0].username]).then((book)=>{
+            req.session.user =  username ;
             res.send(book)
            }).catch((err)=>console.log(err))
-           req.session.user = { username };
-           console.log(req.session, 'req.session')
+          
+          //  console.log(req.session, 'req.session')
           //  res.json({ username });
           } else {
               res.status(403).json({ message: 'Invalid password' });
@@ -41,10 +44,12 @@ module.exports={
   },
 
   addToLibrary(req,res) {
+   
     const db = req.app.get('db')
- const {id,title,author,publisher,publishdate, description, image, username} = req.body
-    db.add_to_library([id, title, author, publisher, publishdate, description, image, username]).then(response => {
-      db.get_library([data[0].username]).then((book)=>{
+    console.log(req.session.user, 'hello')
+    const {id,title,author,publisher,publishdate, description, image} = req.body
+    db.add_to_library([id, title, author, publisher, publishdate, description, image, req.session.user]).then(response => {
+      db.get_library([req.session.user]).then((book)=>{
         res.send(book)
        }).catch((err)=>console.log(err))
      console.log(response, 'response')

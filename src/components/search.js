@@ -16,9 +16,7 @@ class Search extends Component {
 
      getBookdata(prop){
      axios.get(`https://www.googleapis.com/books/v1/volumes?q=${prop}`).then((response) => {
-       console.log(response.data.items, "items"); 
- 
-       this.setState({
+      this.setState({
          books: response.data.items,
          bookChoice: ""
        })
@@ -36,7 +34,7 @@ class Search extends Component {
  
     const book = this.state.books.map((bo)=>{
     if(bo.volumeInfo.imageLinks !== undefined){
-
+      console.log(bo.volumeInfo.publishedDate, 'date')
 
       return (
 

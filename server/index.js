@@ -12,7 +12,7 @@ massive(process.env.CONNECTION_STRING).then(db => app.set('db', db));
 app.use(bodyPaser.json());
 app.use(session({
   secret: "mega hyper ultra secret",
-  saveUninitialized: false,
+  saveUninitialized: true,
   resave: false,
 }));
 
