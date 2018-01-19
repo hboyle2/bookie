@@ -22,7 +22,7 @@ app.post('/logout', ctrl.logout);
 app.post('/register', ctrl.registerUser);
 app.post('/login', ctrl.login)
 app.post('/library', ctrl.addToLibrary )
-app.get('/bob', ctrl.bob )
+app.get('/library/:id', ctrl.viewBook)
 
 const PORT = 3040;
 app.listen(PORT, () => {

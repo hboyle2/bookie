@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Link} from 'react-router-dom'
 
 class Library extends Component {
   render() {
@@ -7,7 +8,7 @@ class Library extends Component {
     let library = this.props.library.map((lib, i)=>{
       return (
         <div key={i}>
-          <div>{lib.title}</div>
+         <Link to= {`/library/${lib.id}`}><div>{lib.title}</div></Link> 
         </div>
       )
     })

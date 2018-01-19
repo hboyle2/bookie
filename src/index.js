@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import store from './ducks/store';
 import registerServiceWorker from './registerServiceWorker';
+import './styles/main.css'
 
 ReactDOM.render( 
 <Provider store={store}>

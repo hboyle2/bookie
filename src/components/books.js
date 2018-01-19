@@ -1,28 +1,27 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
+import { connect } from 'react-redux';
+import {addToLibrary} from '../ducks/reducer'
+
 class Books extends Component {
   
-  
-  addToLibrary(id, title, author, publisher, publishdate, description, image){
-    // console.log('id', id,"title", title,"author", author,"publisher", publisher,"publishdate", publishdate,"desc", description, "img", image, "user",userid)
-    axios.post('/library', { id,title, author, publisher,  publishdate, description, image}).then((bob)=>{
-      return bob.data
-      
-  })
-  }
-
   render() {
     const bo = this.props.bo
     return (
       
-      <div>
+      <div >
          <li >{bo.volumeInfo.title}</li>
           <img src={bo.volumeInfo.imageLinks.thumbnail} />
           <div>{bo.volumeInfo.authors}</div>
-          <button onClick = {()=>this.addToLibrary(bo.id, bo.volumeInfo.title, bo.volumeInfo.authors, bo.volumeInfo.publisher, bo.volumeInfo.publishedDate, bo.volumeInfo.description, bo.volumeInfo.imageLinks.thumbnail)}>add to library</button>
+          <button onClick = {()=>this.props.addToLibrary(bo.id, bo.volumeInfo.title, bo.volumeInfo.authors[0], bo.volumeInfo.publisher, bo.volumeInfo.description, bo.volumeInfo.imageLinks.thumbnail)}>add to library</button>
       </div>
     );
   }
 }
-// id, title, author, publisher, publishdate, description, image, userid
-export default Books;
+
+function mapStateToProps(state) {
+  return {
+     library : state.library
+  }
+}
+export default connect( mapStateToProps, {addToLibrary})(Books)
