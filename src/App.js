@@ -8,16 +8,15 @@ import SingleView from './components/singleView'
 class App extends Component {
   render() {
     return (
-      <div className="App">
-            <HashRouter>
-  <Switch>
-  
-  <Route exact path ='/' component={Login}/>
-  <Route path='/search' component={ Search} />
-  <Route path='/library/:id' component={ SingleView} />
-  <Route path='/library' component={ Library} />
+      <div>
+ <HashRouter>
+   <Switch>
+     <Route exact path ='/' component={Login}/>
+     <Route path='/search' component={ Search} />
+     <Route path='/library/:id' component={ SingleView} />
+     <Route path='/library' component={ Library} />
   </Switch>
-</HashRouter>
+ </HashRouter>
       </div>
     );
   }
