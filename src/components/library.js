@@ -9,6 +9,8 @@ class Library extends Component {
       return (
         <div key={i}>
          <Link to= {`/library/${lib.id}`}><div>{lib.title}</div></Link> 
+         {lib.author}
+         <img src={lib.image}/>
         </div>
       )
     })

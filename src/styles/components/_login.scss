@@ -16,11 +16,33 @@ body{
 }
 
 .input{
+  text-align: center;
   display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: center;
 	align-items: center;
   align-content: center;
+
   
+}
+
+input{
+  padding: 12px 20px;
+  margin: 8px 8px;
+  box-sizing: border-box;
+}
+
+button{
+  padding: 12px 20px;
+  margin: 8px 8px;
+  box-sizing: border-box;
+  font-family: 'Lobster', cursive;
+ 
+}
+
+h3{
+  font-family: 'Lobster', cursive;
+  color: #efe1c9;
+  font-size: 40px;
 }

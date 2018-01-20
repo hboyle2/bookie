@@ -29,9 +29,10 @@ handlePassword(password){
       <div className = 'login_background'>
       <h1 className = 'bookie'>Bookie</h1>
         <div className = 'input'>
+        
          <input value= {this.state.username} onChange={ (e)=>this.handleUsername(e.target.value)} />
-         <input value= {this.state.password} onChange={ (e)=>this.handlePassword(e.target.value)} />
-         <button onClick = {() => this.props.login(this.state.username, this.state.password)}>Button</button>
+         <input value= {this.state.password} type = 'password' onChange={ (e)=>this.handlePassword(e.target.value)} />
+         <button onClick = {() => this.props.login(this.state.username, this.state.password)}>Login</button>
         </div>
       </div>
     );
